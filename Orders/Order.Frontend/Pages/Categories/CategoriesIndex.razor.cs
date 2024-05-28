@@ -4,40 +4,40 @@ using Order.Frontend.Repositories;
 using Orders.Shared.Entities;
 using System.Net;
 
-namespace Order.Frontend.Pages.Countries
+namespace Order.Frontend.Pages.Categories
 {
-    public partial class CountriesIndex
+    public partial class CategoriesIndex
     {
         [Inject] private IRepository Repository { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
-        public List<Country>? Countries { get; set; }
+        public List<Category>? Categories { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
             await LoadAsync();
-            
+
         }
 
         private async Task LoadAsync()
         {
             await base.OnInitializedAsync();
-            var responseHttp = await Repository.GetAsync<List<Country>>("api/countries");
-            if(responseHttp.Error)
+            var responseHttp = await Repository.GetAsync<List<Category>>("api/categories");
+            if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error",message,SweetAlertIcon.Error);
+                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
                 return;
             }
-            Countries = responseHttp.Response;
+            Categories = responseHttp.Response;
         }
 
-        private async Task DeleteAsync(Country country) 
+        private async Task DeleteAsync(Category category)
         {
             var result = await SweetAlertService.FireAsync(new SweetAlertOptions
             {
                 Title = "Confirmacion",
-                Text = $"Estas seguro de querer borrar el pais: {country.Name}?",
+                Text = $"Estas seguro de querer borrar la categoria: {category.Name}?",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true,
             });
@@ -47,12 +47,12 @@ namespace Order.Frontend.Pages.Countries
                 return;
             }
 
-            var responseHttp = await Repository.DeleteAsync<Country>($"api/countries/{country.Id}");
+            var responseHttp = await Repository.DeleteAsync<Country>($"api/categories/{category.Id}");
             if (responseHttp.Error)
             {
                 if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
                 {
-                    NavigationManager.NavigateTo("/countries");
+                    NavigationManager.NavigateTo("/categories");
                 }
                 else
                 {
