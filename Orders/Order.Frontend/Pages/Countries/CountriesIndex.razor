@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th>Pais</th>
+                    <th>Provincia/Estados</th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,9 +21,11 @@
                 {
                     <tr>
                         <td>@country.Name</td>
+                        <td>@country.StateNumber</td>
                         <td>
-                            <a href="/countries/edit/@country.Id" class="btn btn-warning">Editar</a>
-                            <button @onclick=@(()=> DeleteAsync(country)) class="btn btn-danger">Borrar</button>
+                            <a href="/countries/edit/@country.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/countries/details/@country.Id" class="btn btn-info btn-sm">Detalle</a>
+                            <button @onclick=@(()=> DeleteAsync(country)) class="btn btn-danger btn-sm">Borrar</button>
                         </td>
                     </tr>
                 }
