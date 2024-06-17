@@ -40,7 +40,7 @@ namespace Orders.Backend.Repositories.Implementations
             }
         }
 
-        public async Task<ActionResponse<T>> DeleteAsync(int id)
+        public virtual async Task<ActionResponse<T>> DeleteAsync(int id)
         {
             var row =  await _entity.FindAsync(id);
             if (row == null)

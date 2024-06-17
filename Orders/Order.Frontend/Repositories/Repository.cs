@@ -25,6 +25,7 @@ namespace Order.Frontend.Repositories
 
         public async Task<HttpResponseWrapper<T>> GetAsync<T>(string url)
         {
+            System.Console.WriteLine("llego aca");
             var responseHttp = await _httpClient.GetAsync(url);
             if (responseHttp.IsSuccessStatusCode)
             {

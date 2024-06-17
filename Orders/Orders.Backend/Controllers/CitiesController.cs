@@ -31,7 +31,7 @@ namespace Orders.Backend.Controllers
         [HttpGet("totalPages")]
         public override async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
         {
-            var response = await _citiesUnitOfWork.GetAsync(pagination);
+            var response = await _citiesUnitOfWork.GetTotalPagesAsync(pagination);
             if (response.WasSuccess)
             {
                 return Ok(response.Result);

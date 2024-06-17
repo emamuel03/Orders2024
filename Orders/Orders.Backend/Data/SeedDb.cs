@@ -26,6 +26,15 @@ namespace Orders.Backend.Data
                 _context.Categories.Add(new Shared.Entities.Category { Name = "Mascotas" });
                 _context.Categories.Add(new Shared.Entities.Category { Name = "Hogar" });
                 _context.Categories.Add(new Shared.Entities.Category { Name = "Cosmeticos" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Jardinería" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Videojuegos" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Calzados" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Vestimenta" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "PC" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Electrodomésticos" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "TVs" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Muebles de interior" });
+                _context.Categories.Add(new Shared.Entities.Category { Name = "Bicicletas" });
                 await _context.SaveChangesAsync();
             }
         }
