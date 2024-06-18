@@ -37,6 +37,7 @@ namespace Orders.Shared.Entities
         [Display(Name = "Tipo de Usuario")]
         public UserType UserType  { get; set; }
 
+        public City? City { get; set; }
         [Display(Name = "Ciudad")]
         [Range(1, int.MaxValue, ErrorMessage ="Debe seleccionar una {0}.")]
         public int CityId { get; set; }

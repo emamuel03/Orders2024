@@ -1,4 +1,5 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Order.Frontend.Repositories;
 using Order.Frontend.Shared;
@@ -7,6 +8,7 @@ using System.Net;
 
 namespace Order.Frontend.Pages.Countries
 {
+    [Authorize(Roles = "Admin")]
     public partial class CountryEdit
     {
         private Country? country;

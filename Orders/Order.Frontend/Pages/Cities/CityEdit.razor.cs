@@ -1,4 +1,5 @@
 ﻿using CurrieTechnologies.Razor.SweetAlert2;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Order.Frontend.Repositories;
 using Order.Frontend.Shared;
@@ -6,6 +7,7 @@ using Orders.Shared.Entities;
 
 namespace Order.Frontend.Pages.Cities
 {
+    [Authorize(Roles = "Admin")]
     public partial class CityEdit
     {
         private City? city;
